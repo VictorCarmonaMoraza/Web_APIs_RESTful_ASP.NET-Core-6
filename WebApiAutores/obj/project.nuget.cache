@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "DJz+gGeRcMF4NfiOcppoTSpZVqR0o7RRm/mtiIUO7hW1zPgPLMEKWeBP4KOAN3aQfSJp4but8aTc5/phkknTlA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Victo\\Desktop\\Proyectos 2022\\Construyendo Web APIs TESTful con ASP.NET Core 6\\WebApiAutores\\WebApiAutores\\WebApiAutores.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Victo\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Victo\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Victo\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\Victo\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\Victo\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\Victo\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
