@@ -29,7 +29,7 @@ namespace WebApiAutores.Controllers
         public async Task<ActionResult<List<Autor>>> Get()
         {
             //Obtenemos el listado de autores de la base de datos
-            return await context.Autores.ToListAsync();
+            return await context.Autores.Include(x=>x.Libros).ToListAsync();
         }
 
         /// <summary>
