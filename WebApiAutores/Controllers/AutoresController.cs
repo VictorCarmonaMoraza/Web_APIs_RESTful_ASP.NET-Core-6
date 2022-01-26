@@ -31,7 +31,7 @@ namespace WebApiAutores.Controllers
         public async Task<ActionResult<List<Autor>>> Get()
         {
             //Obtenemos el listado de autores de la base de datos
-            return await context.Autores.Include(x=>x.Libros).ToListAsync();
+            return await context.Autores.Include(x => x.Libros).ToListAsync();
         }
 
         /// <summary>
@@ -44,13 +44,48 @@ namespace WebApiAutores.Controllers
             return await context.Autores.FirstOrDefaultAsync();
         }
 
+        Asignarle un valor por defecto 
+        //[HttpGet("{id:int}/{params2=persona}")]
+        [HttpGet("{id:int}/{params2?}")]
+        public async Task<ActionResult<Autor>> Get(int id, string params2)
+        {
+            var autor =  await context.Autores.FirstOrDefaultAsync(x => x.Id == id);
+
+            //Comprobamos que autor no es nulo
+            if(autor == null)
+            {
+                //Retornamos no encontrado
+                return NotFound();
+            }
+            return autor;
+        }
+
+        /// <summary>
+        /// Buscar un autor por su nombre
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{nombre}")]
+        public async Task<ActionResult<Autor>> Get(string nombre)
+        {
+            var autor = await context.Autores.FirstOrDefaultAsync(x => x.Nombre.Contains(nombre));
+
+            //Comprobamos que autor no es nulo
+            if (autor == null)
+            {
+                //Retornamos no encontrado
+                return NotFound();
+            }
+            return autor;
+        }
+
         /// <summary>
         /// Creacion de un autor
         /// </summary>
         /// <param name="autor">modelo de autor</param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult>Post(Autor autor)
+        public async Task<ActionResult> Post(Autor autor)
         {
             //Creamos un autor en la base de datos
             context.Add(autor);
