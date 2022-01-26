@@ -25,7 +25,9 @@ namespace WebApiAutores.Controllers
         /// Devolvemos un listado de Autores que estan creados en memoria
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet]   //api/autores
+        [HttpGet("listado")]    //api/autores/listado
+        [HttpGet("/listado")] // desaparaece api/autores por --->listado
         public async Task<ActionResult<List<Autor>>> Get()
         {
             //Obtenemos el listado de autores de la base de datos
