@@ -44,6 +44,17 @@ namespace WebApiAutores.Controllers
             return await context.Autores.FirstOrDefaultAsync();
         }
 
+        /// <summary>
+        /// Metodo que devuelve un autor que esta en memoria
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("primero2")] // api/autores/primero
+        public ActionResult<Autor> PrimerAutor2()
+        {
+            //retorna este autor que hemos creado con el Nombre="Inventado"
+            return new Autor() { Nombre = "Inventado" };
+        }
+
         //Asignarle un valor por defecto 
         //[HttpGet("{id:int}/{params2=persona}")]
         [HttpGet("{id:int}/{params2?}")]
