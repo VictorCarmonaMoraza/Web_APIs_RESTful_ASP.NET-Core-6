@@ -44,7 +44,7 @@ namespace WebApiAutores.Controllers
             return await context.Autores.FirstOrDefaultAsync();
         }
 
-        Asignarle un valor por defecto 
+        //Asignarle un valor por defecto 
         //[HttpGet("{id:int}/{params2=persona}")]
         [HttpGet("{id:int}/{params2?}")]
         public async Task<ActionResult<Autor>> Get(int id, string params2)
