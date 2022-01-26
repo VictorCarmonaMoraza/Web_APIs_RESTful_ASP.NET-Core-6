@@ -1,40 +1,25 @@
-﻿## 29 - Tipos de Datos de Retorno de una accion
+﻿## 30- Programacion Asincrona
 
-NOTA: CUANDO TRABAJEMOS CON BASE DE DATOS TENEMOS QUE TRABAJAR CON PROGRAMACION ASINCRONA
-1-Tipo especifico
+Es recomendable usarla cuando trabajamos con bases de datos.
 
-        [HttpGet]   //api/autores
-        [HttpGet("listado")]    //api/autores/listado
-        [HttpGet("/listado")] // desaparaece api/autores por --->listado
-        public List<Autor> Get()
-        {
-            //Obtenemos el listado de autores de la base de datos
-            return context.Autores.Include(x => x.Libros).ToList();
-        }
+-Cuando ejecutamos una funcion asincrona, nuestro servidor Web se pone a hacer otras tareas
+mientras la funcion se ejecuta.
 
+-No siempre hay que usar programacion asincrona
 
-2-Para este caso debemos deolver un ActionResult
+-Debemos utilizar programacion asincrona cuando realizamos operacion I/O
 
-        [HttpGet("{id:int}/{params2?}")]
-        public Autor Get(int id, string params2)
-        {
-            var autor =  context.Autores.FirstOrDefault(x => x.Id == id);
+-Ejemplos: Llamadas a Web APIs, leer archivos en una PC, realizar operaciones con bases de datos.
 
-            //Comprobamos que autor no es nulo
-            if(autor == null)
-            {
-                //Retornamos no encontrado
-                return NotFound();   ---->ESTO DARIA ERROR PORQUE NotFount HEREDA DE ActionResult
-            }
-            return autor;
-        }
+Para marcar una funcion asincrona se marca con async.
+Con await hacemos una espera asincrona de la operacion.
+Debemos retornar Task en los metodos asincronos.
 
-        -Cambiamos lo anterior por esto y no daria error
 
         [HttpGet("{id:int}/{params2?}")]
-        public ActionResult<Autor> Get(int id, string params2)
+        public async Task<ActionResult<Autor>> Get(int id, string params2)
         {
-            var autor =  context.Autores.FirstOrDefaul(x => x.Id == id);
+            var autor =  await context.Autores.FirstOrDefaultAsync(x => x.Id == id);
 
             //Comprobamos que autor no es nulo
             if(autor == null)
@@ -46,18 +31,8 @@ NOTA: CUANDO TRABAJEMOS CON BASE DE DATOS TENEMOS QUE TRABAJAR CON PROGRAMACION 
         }
 
 
-        IActionResult
+        Task vs Task<T>
 
-        [HttpGet("{id:int}/{params2?}")]
-        public IActionResult Get(int id, string params2)
-        {
-            var autor =  context.Autores.FirstOrDefaul(x => x.Id == id);
+        Task es para no retornar un valor al final de la ejecucion de la funcion asincrona.
 
-            //Comprobamos que autor no es nulo
-            if(autor == null)
-            {
-                //Retornamos no encontrado
-                return NotFound();
-            }
-            return Ok(autor);
-        }
+        Task<T> es para retornar el tipo de T en el futuro  --> Task<ActionResult<Autor>>
