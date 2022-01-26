@@ -33,6 +33,16 @@ namespace WebApiAutores.Controllers
         }
 
         /// <summary>
+        /// Metodo para devolver el primer autor de la tabla
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("primero")] // api/autores/primero
+        public async Task<ActionResult<Autor>> PrimerAutor()
+        {
+            return await context.Autores.FirstOrDefaultAsync();
+        }
+
+        /// <summary>
         /// Creacion de un autor
         /// </summary>
         /// <param name="autor">modelo de autor</param>
